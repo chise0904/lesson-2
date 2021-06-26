@@ -22,14 +22,24 @@
   border: 1px solid black;
   margin: 0 7.5px 15px;
 
+  ## 注意這個 &:first-child 是寫在 .menu-item 裡面的
+  ## & 就代表著 .menu-item
+  ## 所以整個被翻譯成真正的 CSS 語法時, 就會是
+  ## .menu-item:first-child
   &:first-child {
     margin-right: 7.5px;
   }
 
+  ## 同上面的解說
+  ## 這邊就會是 .menu-item:last-child
   &:last-child {
     margin-left: 7.5px;
   }
 
+  ## 跟上面的類似, 只是沒了 &
+  ## 不過也都是內嵌在 .menu-item 中
+  ## 所以這邊被翻譯成真正的 CSS 語法時, 就會是
+  ## .menu-item .content
   .content {
     height: 90px;
     padding: 0 25px;
@@ -39,6 +49,9 @@
     justify-content: center;
     border: 1px solid black;
 
+    ## 這邊又再度內嵌在 .content 中
+    ## 被翻譯成真正的 CSS 語法時, 就會是
+    ## .menu-item .content .title
     .title {
       font-weight: bold;
       margin-bottom: 6px;
@@ -46,6 +59,9 @@
       color: #4a4a4a;
     }
 
+    ## 同 .title
+    ## 被翻譯成真正的 CSS 語法時, 就會是
+    ## .menu-item .content .subtitle
     .subtitle {
       font-weight: lighter;
       font-size: 16px;
